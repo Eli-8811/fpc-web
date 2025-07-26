@@ -42,9 +42,11 @@ const Login: React.FC = () => {
         >
           <Grid
             size={{ xs: 0, sm: 9 }}
-            sx={{ backgroundColor: 'black', display: { xs: 'none', sm: 'block' } }}
+            sx={{
+              backgroundColor: 'black',
+              display: { xs: 'none', sm: 'block' }
+            }}
           >
-            {/* Contenido visible solo en sm o superior */}
             <p>&nbsp;&nbsp;&nbsp;</p>
           </Grid>
 
@@ -52,13 +54,39 @@ const Login: React.FC = () => {
             size={{ xs: 12, sm: 3 }}
             sx={{ backgroundColor: 'red' }}
           >
-            {/* Contenido visible en todos los tamaños */}
             <p>&nbsp;&nbsp;&nbsp;</p>
           </Grid>
-
         </Grid>
 
         <CssBaseline />
+
+        <Grid
+          container
+          spacing={0}
+          direction="row"
+          alignItems="center"
+          justifyContent="flex-end"
+          sx={{
+            position: 'absolute',
+            top: 0,
+            height: '100vh'
+          }}
+        >
+          
+          <Grid size={{ xs: 0, sm: 7 }}>
+            {/* Aquí va el contenido */}
+          </Grid>
+
+          <Grid
+            container
+            size={{ xs: 12, sm: 5 }}
+            rowSpacing={0}
+            columnSpacing={0}
+          >
+            {/* Aquí va el contenido */}
+          </Grid>
+
+        </Grid>
 
       </ThemeProvider>
 
