@@ -1,5 +1,4 @@
 import React from 'react';
-import { logoutUser } from '@store/login/Thunks';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '@store/index';
 import { useNavigate } from 'react-router-dom';
+import { logoutUser } from '@store/session/sessionThunks';
 
 const Home: React.FC = () => {
 

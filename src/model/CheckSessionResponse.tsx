@@ -1,8 +1,7 @@
-export interface LoginResponse {
+export interface CheckSessionResponse {
     estatus: string;
     mensaje: string;
     mensajeCore: string;
     codigo: string;
-    resultado: any;
-    token: string;
+    resultado: boolean;
 }

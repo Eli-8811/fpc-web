@@ -5,26 +5,35 @@ import Card from '@mui/material/Card';
 import Center from '@components/Center';
 import LockIcon from '@mui/icons-material/Lock';
 import HSBC_logo from '@assets/img/logo_hsbc.png';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import CustomSnackbar from '@components/CustomSnackbar';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 import { useForm } from 'react-hook-form';
-import { useAppDispatch } from "@store/Hooks";
+import { useAppDispatch } from "@hooks/Redux";
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from "@store/login/Thunks";
 import { loginSchema } from '@utils/Validators';
 import { PaddingTop } from '@components/PaddingTop';
-import { AuthService } from '@services/AuthService';
 import { yupResolver } from '@hookform/resolvers/yup';
 import type { LoginPayload } from '@model/LoginPayload';
+import { useLoading } from '@providers/LoadingProvider';
 import { PaddingBottom } from '@components/PaddingBottom';
+import { SnackbarSeverity } from '@model/enum/SnackbarSeverity';
 import { Button, CardMedia, InputAdornment, TextField, Typography } from '@mui/material';
-
-import type { SnackbarSeverity as SnackbarSeverityType } from '@model/SnackbarSeverity';
-import { SnackbarSeverity } from '@model/SnackbarSeverity';
-
+import type { SnackbarSeverity as SnackbarSeverityType } from '@model/enum/SnackbarSeverity';
+import { thunkLogin } from '@store/login/loginThunks';
+import { thunkCheckSession } from '@store/session/sessionThunks';
 
 const CardLogin: React.FC = () => {
+
+  const _version = '3.14.0';
+  const _url = 'https://fpc.techhub.mx:9443/fpc';
+  const _urlApi = 'https://fpc.techhub.mx:9543/fpc-api';
+  const _apiTimeout = 130000;
+  const _contextPath = '/fpc';
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { showLoading, hideLoading } = useLoading();
 
   const [snackbar, setSnackbar] = useState<{
     open: boolean;
@@ -38,27 +47,40 @@ const CardLogin: React.FC = () => {
     autoHideDuration: 0,
   });
 
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
   const { register, handleSubmit, formState: { errors, isValid } } = useForm({
     resolver: yupResolver(loginSchema),
     mode: 'onChange',
+    defaultValues: {
+      user: 'dsfpcadmin',
+      sensible: 'b1Nar.4',
+    }
   });
 
-
   const onSubmit = async ({ user, sensible }: { user: string; sensible: string }) => {
+
     const payload: LoginPayload = {
       username: user,
       password: sensible,
-      expiresInMins: 43200,
     };
 
     try {
-      const response = await AuthService.loginDummy(payload);
-      console.log('Respuesta dummy:', response);
 
-      if (response.accessToken !== undefined) {
+      showLoading();
+
+      const responseCheck = await dispatch(thunkCheckSession(payload.username)).unwrap();
+      console.log(responseCheck.resultado);
+
+      if (responseCheck.resultado === false) {
+
+      } else {
+
+      }
+
+      const responseLogin = await dispatch(thunkLogin(payload)).unwrap();
+      console.log(responseLogin);
+      
+      if (responseLogin.token) {
+        
         setSnackbar({
           open: true,
           message: 'Acceso concedido...',
@@ -66,11 +88,11 @@ const CardLogin: React.FC = () => {
           autoHideDuration: 1000,
         });
 
-        await dispatch(loginUser(payload)).unwrap();
-
         setTimeout(() => {
+          hideLoading();
           navigate('/home');
-        }, 3000);
+        }, 1000);
+
       } else {
         setSnackbar({
           open: true,
@@ -79,16 +101,20 @@ const CardLogin: React.FC = () => {
           autoHideDuration: 3000,
         });
       }
+
     } catch (error: any) {
-      const message = error?.response?.data?.message || 'Error inesperado al iniciar sesión';
+
       setSnackbar({
         open: true,
-        message,
+        message: error?.message || 'Error inesperado al iniciar sesión',
         severity: SnackbarSeverity.Error,
         autoHideDuration: 3000,
       });
+
     }
+  
   };
+
 
   return (
     <>

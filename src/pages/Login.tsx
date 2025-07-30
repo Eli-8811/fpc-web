@@ -19,7 +19,7 @@ const Login: React.FC = () => {
             </div>
             <div className="container">
               <div className="row justify-content-center align-items-end">
-                <Clock/>
+                <Clock />
               </div>
             </div>
           </div>

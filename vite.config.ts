@@ -19,6 +19,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           '@layouts': path.resolve(__dirname, 'src/layouts'),
           '@model': path.resolve(__dirname, 'src/model'),
           '@pages': path.resolve(__dirname, 'src/pages'),
+          '@providers': path.resolve(__dirname, 'src/providers'),
           '@services': path.resolve(__dirname, 'src/services'),
           '@store': path.resolve(__dirname, 'src/store'),
           '@themes': path.resolve(__dirname, 'src/themes'),

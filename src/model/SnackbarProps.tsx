@@ -1,4 +1,4 @@
-import type { SnackbarSeverity } from '@model/SnackbarSeverity';
+import type { SnackbarSeverity } from '@model/enum/SnackbarSeverity';
 
 export interface SnackbarProps {
   open: boolean;

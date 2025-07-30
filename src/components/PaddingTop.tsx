@@ -1,10 +1,10 @@
-import type { SpacingProps } from "@model/PaddingProps";
+import type { PaddingProps } from "@model/PaddingProps";
 import { Box } from "@mui/material";
 
 export const PaddingTop = ({
   children,
   size,
-}: SpacingProps) => (
+}: PaddingProps) => (
   <Box sx={{ pt: size }}>
     {children}
   </Box>
