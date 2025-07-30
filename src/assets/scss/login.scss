@@ -1,9 +1,145 @@
-.gridContainer {
-  position: absolute;
-  top: 0;
-  height: 100vh;
+.logo-hsbc {
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+.custom-textfield .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #db0011 !important;
+}
+
+.custom-textfield .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #db0011 !important;
+}
+
+.custom-textfield .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #db0011 !important;
+}
+
+.custom-icon {
+  color: #db0011 !important;
+}
+
+.custom-label .MuiInputLabel-root {
+  color: gray !important;
+}
+
+form .custom-textfield .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: gray !important;
+}
+
+.form-login {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.login-bg {
+  background-image: url('src\\assets\\img\\login-bg.jpg') !important;
+  background-position: right center !important;
+  background-size: auto 100% !important;
+  background-repeat: repeat !important;
+  height: 100vh !important;
+}
+
+.login-seal {
+  background-image: url('src\\assets\\img\\hsbc-sello.png') !important;
+  background-position: 0px top !important;
+  background-color: #db0011 !important;
+  background-size: 80px auto !important;
+  background-repeat: repeat !important;
+  height: 100vh !important;
+}
+
+.button-login {
+  color: #ffffff !important;
+  background-color: #db0011 !important;
+  width: 100% !important;
+  height: 48px !important;
+  border-radius: 0 !important;
+  text-transform: none !important;
+  font-size: 18px !important;
+  margin: 5px 0 !important;
+}
+
+.mi-boton:hover {
+  background-color: #f50014 !important;
+}
+
+.mi-boton:active {
+  background-color: #c20010 !important;
+}
+
+.mi-boton:disabled {
+  background-color: #d7d8d6 !important;
+}
+
+.caja-central {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 1rem !important;
+}
+
+.bar-text {
+  flex-grow: 1 !important;
+  text-align: center !important;
+}
+
+.responsive-box {
+  padding-top: 8.6rem !important;
+  padding-right: 0rem !important;
+}
+
+@media (max-width:600px) {
+  .responsive-box {
+    padding-top: 8.6rem !important;
+    padding-right: 0rem !important;
+  }
+}
+
+@media (min-width:600px) and (max-width:900px) {
+  .responsive-box {
+    padding-top: 8.6rem !important;
+    padding-right: 0rem !important;
+  }
+}
+
+@media (min-width:900px) and (max-width:1200px) {
+  .responsive-box {
+    padding-top: 8.6rem !important;
+    padding-right: 0rem !important;
+  }
+}
+
+@media (min-width:1200px) and (max-width:1536px) {
+  .responsive-box {
+    padding-top: 8.6rem !important;
+    padding-right: 0rem !important;
+  }
+}
+
+@media (min-width:1536px) {
+  .responsive-box {
+    padding-top: 8.6rem !important;
+    padding-right: 0rem !important;
+  }
+}
+
+.clock h3 {
+  font-family: Arial, Helvetica, sans-serif !important;
+  color: #8C8C8C !important;
+  display: inline-block !important;
+}
+
+.clock h2 {
+  font-family: Arial, Helvetica, sans-serif !important;
+  color: #FFFFFF !important;
+  display: inline-block !important;
+  margin-left: 20px !important;
+}
+
+.clock {
+  display: inline-block !important;
+  text-align: center !important;
 }

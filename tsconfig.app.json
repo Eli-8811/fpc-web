@@ -26,6 +26,9 @@
       "@services/*": [
         "src/services/*"
       ],
+      "@store/*": [
+        "src/store/*"
+      ],
       "@themes/*": [
         "src/themes/*"
       ],
